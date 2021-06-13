@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "../store/actions";
 import { useHistory } from "react-router";
 
-//
-import { useParams } from "react-router";
+//import { useParams } from "react-router";
 
 
 const FormProduct = () => {
