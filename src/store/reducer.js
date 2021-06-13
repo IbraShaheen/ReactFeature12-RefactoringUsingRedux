@@ -2,6 +2,7 @@ import {ADD_PRODUCT, UPDATE_PRODUCT} from "./actions"
 import productsData from "../products"
 import slugify from "slugify"
 
+
 const initialState = {
     products:productsData,
 } 
