@@ -98,7 +98,7 @@ const FormProduct = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-dark">
+        <button type="submit" className="btn btn-dark" style={{ color: "cyan" }}>
           Submit
         </button>
       </form>
