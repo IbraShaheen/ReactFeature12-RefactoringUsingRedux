@@ -1,4 +1,6 @@
+
 export const ADD_PRODUCT = "ADD_PRODUCT";
+export const UPDATE_PRODUCT ="UPDATE_PRODUCT";
 export const deleteProduct = (productId) => {
 
     return {
@@ -14,6 +16,15 @@ export const addProduct = (product)=> {
         type:ADD_PRODUCT,
         payload: {
             product:product,
+        }
+    }
+}
+
+export const updateProduct = (updatedProducts)=>{
+    return{
+        type:UPDATE_PRODUCT,
+        payload:{
+            updatedProducts:updatedProducts,
         }
     }
 }

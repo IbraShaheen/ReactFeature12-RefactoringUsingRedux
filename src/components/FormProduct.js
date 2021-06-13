@@ -1,43 +1,51 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../store/actions";
+import { addProduct, updateProduct } from "../store/actions";
 import { useHistory } from "react-router";
-
-//import { useParams } from "react-router";
-
+import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 
 const FormProduct = () => {
+  const productSlug = useParams().productSlug;
+  const products = useSelector((state) => state.products);
+  const updatedProducts = products.find(
+    (product) => product.slug === productSlug
+  );
+  
+
   const [product, setProduct] = useState(
-      {
-    name: "",
-    price: 1,
-    description: "",
-    image: "",
-  });
-
-
+    updatedProducts
+      ? updatedProducts
+      : {
+          name: "",
+          price: 0,
+          description: "",
+          image: "",
+        }
+  );
   const dispatch = useDispatch();
   const history = useHistory();
-
   const resetForm = () => {
     setProduct({
       name: "",
-      price: 1,
+      price: 0,
       description: "",
       image: "",
     });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    if(updatedProducts)
+    dispatch(updateProduct(product));
+    else
     dispatch(addProduct(product));
     history.push("/products");
-
     resetForm();
   };
   const handleChange = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
   };
+
 
   return (
     <center>
