@@ -45,6 +45,8 @@ const FormProduct = () => {
   const handleChange = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
   };
+  const handleImage = (event) =>
+  setProduct({ ...product, image: event.target.files[0] });
 
 
   return (
@@ -71,7 +73,7 @@ const FormProduct = () => {
             onChange={handleChange}
             name="price"
             value={product.price}
-            min={1}
+            //min={1}
             required
           />
         </div>
@@ -89,12 +91,12 @@ const FormProduct = () => {
         </div>
         <div className="form-group">
           <input
-            type="text"
+            type="file"
             className="form-control"
             placeholder="Enter the product Image URL"
-            onChange={handleChange}
+            onChange={handleImage}
             name="image"
-            value={product.image}
+            //value={product.image}
             required
           />
         </div>
