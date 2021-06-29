@@ -18,7 +18,7 @@ export const deleteProduct = (productId) => {
     return async (dispatch) => {
 
         try {
-            await axios.delete(`http://localhost:8080/movies/${productId}`)
+            await axios.delete(`http://localhost:8080/movies/${productId}`) // we delete the product from the B.E that have this ID
             dispatch({
                 type: "DELETE_PRODUCT",
                 payload: {
