@@ -111,3 +111,8 @@ export const fetchProducts = () => {
     }
   };
 };
+
+// trigger any fun. with dispatch(fun.()) >> action >> reducer >> index(inner) >> index(outer)
+
+
+
