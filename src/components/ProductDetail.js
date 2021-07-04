@@ -6,11 +6,8 @@ import DeleteButton from "./buttons/DeleteButton";
 import { DetailWrapper } from "../styles";
 import { useSelector } from "react-redux";
 
-
 const ProductDetail = () => {
-
-  const products = useSelector((state) => state.products)
-
+  const products = useSelector((state)=> state.movies.products)
   const { productSlug } = useParams();
   const product = products.find((product) => product.slug === productSlug);
 

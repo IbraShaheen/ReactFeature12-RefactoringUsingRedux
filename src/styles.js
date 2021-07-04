@@ -99,3 +99,23 @@ export const ThemeButton = styled.button`
 export const Title = styled.h1`
   text-align: center;
 `;
+
+export const ShopItem = styled.div`
+  width: 200px;
+  margin: auto;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* img {
+    padding: 10px;
+    width: 200px;
+    margin-top: 8px;
+  }
+  h3 {
+    text-align: center;
+    padding: 5px;
+  } */
+`;

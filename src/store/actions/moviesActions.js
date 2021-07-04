@@ -1,8 +1,7 @@
 import axios from "axios";
+import { ADD_PRODUCT, DELETE_PRODUCT, FETCH_PRODUCTS, UPDATE_PRODUCT } from "./types";
 
-export const ADD_PRODUCT = "ADD_PRODUCT";
-export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
-export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
+
 
 
 // export const deleteProduct = (productId) => {
@@ -18,10 +17,9 @@ export const deleteProduct = (productId) => {
     return async (dispatch) => {
 
         try {
-            await axios.delete(`http://localhost:8080/movies/${productId}`) // we delete the product from the B.E that have this ID, no response will be back in the del. case
-                                                                             
+            await axios.delete(`http://localhost:8080/movies/${productId}`)
             dispatch({
-                type: "DELETE_PRODUCT",
+                type: DELETE_PRODUCT,
                 payload: {
                   productId: productId,
                 },
@@ -44,14 +42,14 @@ export const deleteProduct = (productId) => {
 //   };
 // };
 
-export const addProduct = (product)=> {
+export const addProduct = (product, shopId)=> {
     return async(dispatch)=>{
         try {
             const formData = new FormData();
             for (const key in product)
             formData.append(key, product[key]);
 
-           const res = await axios.post(`http://localhost:8080/movies`, formData)
+           const res = await axios.post(`http://localhost:8080/shops/${shopId}/movies`, formData)
            //console.log(product)
             dispatch({
                 type:ADD_PRODUCT,
@@ -100,7 +98,7 @@ export const updateProduct = (updatedProduct) => {
 export const fetchProducts = () => {
   return async (dispatch) => {
     try {
-      const res = await axios.get("http://localhost:8080/movies/");
+      const res = await axios.get("http://localhost:8080/movies");
       console.log(res.data)
       dispatch({
         type: FETCH_PRODUCTS,
@@ -111,8 +109,3 @@ export const fetchProducts = () => {
     }
   };
 };
-
-// trigger any fun. with dispatch(fun.()) >> action >> reducer >> index(inner) >> index(outer)
-
-
-

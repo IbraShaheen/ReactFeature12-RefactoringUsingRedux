@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addProduct, updateProduct } from "../store/actions";
+import { addProduct, updateProduct } from "../store/actions/moviesActions";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 
 const FormProduct = () => {
   const productSlug = useParams().productSlug;
-  const products = useSelector((state) => state.products);
+  const shopId = useParams().shopId;
+  const products = useSelector((state) => state.movies.products); /// it was state.products
   const updatedProducts = products.find(
     (product) => product.slug === productSlug
   );
@@ -35,10 +36,10 @@ const FormProduct = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(updatedProducts)
-    dispatch(updateProduct(product));
-    else
-    dispatch(addProduct(product));
+    // if(updatedProducts)
+    // dispatch(updateProduct(product));
+    // else
+    dispatch(addProduct(product,shopId));
     history.push("/products");
     resetForm();
   };

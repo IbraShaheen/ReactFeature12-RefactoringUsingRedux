@@ -3,7 +3,7 @@ import { DeleteButtonStyled } from "../../styles";
 
 //Actions
 
-import { deleteProduct } from "../../store/actions";
+import { deleteProduct } from "../../store/actions/moviesActions";
 
 import {useDispatch} from "react-redux";
 

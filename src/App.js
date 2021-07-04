@@ -11,7 +11,11 @@ import ProductDetail from "./components/ProductDetail";
 import ProductList from "./components/ProductList";
 import { ThemeProvider } from "styled-components";
 import FormProduct from "./components/FormProduct";
+import ShopsList from "./components/ShopsList";
+import { useSelector } from "react-redux";
+import ShopDetails from "./components/ShopDetails";
 // Data
+import Routes from "./components/Routes";
 
 
 const theme = {
@@ -32,6 +36,7 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   // const [products, setProducts] = useState(productsData);
+  // const  products = useSelector(state => state.movies.products)
 
   // const deleteProduct = (productId) => {
   //   const updatedProducts = products.filter(
@@ -47,27 +52,7 @@ function App() {
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
-      <Switch>
-         
-      <Route  path="/products/:productSlug/edit" >
-        <FormProduct />
-       </Route>
-
-      <Route  path="/products/FormProduct" >
-        <FormProduct />
-       </Route>
-        <Route path="/products/:productSlug">
-          <ProductDetail />
-        </Route>
-        
-        <Route path="/products">
-          <ProductList  />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-       
-      </Switch>
+      <Routes/>
     </ThemeProvider>
   );
 }
